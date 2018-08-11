@@ -1,0 +1,11 @@
+<template name="ApplicationLayout">
+  {{> sAlert}}
+  {{> navBar}}
+  <div class="container-fluid">
+    <div class="row">
+      {{> leftNav}}
+      {{> yield "main"}}
+    </div>
+  </div>
+  {{> setRateModal}}
+</template>

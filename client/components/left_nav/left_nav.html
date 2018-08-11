@@ -1,0 +1,35 @@
+<template name="leftNav">
+  <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+
+
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link {{getClass homePath}}" href="{{homePath}}">
+            <i class="fal fa-home"></i>
+            Projects
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{getClass clientsPath}}" href="{{clientsPath}}">
+            <i class="fal fa-users"></i>
+            Clients
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{getClass entriesPath}}" href="{{entriesPath}}">
+            <i class="fal fa-clock"></i>
+            Entries
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{getClass transactionsPath}}" href="{{transactionsPath}}">
+            <i class="fal fa-credit-card"></i>
+            Transactions
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+</template>
