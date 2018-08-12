@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-12">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-          <h1 class="h2">Transactions</h1>
+          <h1 class="h2">Transactions</h1> <span class="float-right"><button data-toggle="modal" data-target="#addTransactionModal" class="btn btn-outline-tertiary"><i class="fal fa-plus"></i></button></span>
         </div>
       </div>
     </div>
@@ -17,14 +17,17 @@
           <table class="table table-striped table-sm">
             <thead>
               <tr>
-                <th>ID</th>
-                <th colspan="2"></th>
+                <th>Project</th>
+                <th>Amount</th>
+                <th>Date</th>
               </tr>
             </thead>
             <tbody>
               {{#each transactions}}
                 <tr>
-                  <td>{{this._id}}</td>
+                  <td>{{this.projectName}}</td>
+                  <td>${{this.amount}}</td>
+                  <td>{{createdOn}}</td>
                 </tr>
               {{/each}}
               {{#if isEmpty transactions}}
@@ -34,6 +37,48 @@
               {{/if}}
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="addTransactionModal">
+    <div class="vertical-alignment-helper">
+      <div class="modal-dialog vertical-align-center" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Register a payment</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="addTransactionForm">
+
+              <div class="form-group">
+                <label for="addTransactionProject">Project</label>
+                <select class="form-control" id="addTransactionProject" name="projectId">
+                  {{#each projects}}
+                    <option value="{{this._id}}">{{this.name}} ({{this.clientName}})</option>
+                  {{/each}}
+                </select>
+                <small id="projectHelp" class="form-text text-muted">If you don't see your project here, it might be that it hasn't been configured an hourly rate. Go to the <a href="{{projectsPath}}">projects page</a> to do so.</small>
+              </div>
+
+              <div class="form-group">
+                <label for="addTransactionAmount">Amount</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">$</div>
+                  </div>
+                  <input type="number" class="form-control" name="amount" id="addTransactionAmount" autocomplete="off" min="1">
+                </div>
+              </div>
+
+              <br>
+              <button type="submit" class="btn btn-primary btn-block btn-lg">REGISTER</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

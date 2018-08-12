@@ -20,7 +20,7 @@
                 <th>Name</th>
                 <th>Total Work</th>
                 <th>Billed Work</th>
-                <th class="d-sm-none d-none">Pending Work</th>
+                <th>Pending Work</th>
               </tr>
             </thead>
             <tbody>
@@ -29,7 +29,7 @@
                   <td>{{this.name}}</td>
                   <td>{{totalWork}}</td>
                   <td>{{billedWork}}</td>
-                  <td class="d-sm-none d-none">{{pendingWork}}</td>
+                  <td>{{pendingWork}}</td>
                 </tr>
               {{/each}}
               {{#if isEmpty clients}}

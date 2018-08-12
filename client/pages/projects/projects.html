@@ -18,10 +18,10 @@
             <thead>
               <tr>
                 <th>Name</th>
-                <th class="d-sm-none d-none">Client</th>
+                <th>Client</th>
                 <th>Total Work</th>
                 <th>Billed Work</th>
-                <th class="d-sm-none d-none">Pending Payment</th>
+                <th>Pending Payment</th>
                 <th>Hourly Rate</th>
               </tr>
             </thead>
@@ -29,10 +29,10 @@
               {{#each projects}}
                 <tr>
                   <td>{{this.name}}</td>
-                  <td class="d-sm-none d-none">{{this.clientName}}</td>
+                  <td>{{this.clientName}}</td>
                   <td>{{totalWork}}</td>
                   <td>{{billedWork}}</td>
-                  <td class="d-sm-none d-none">{{pendingWork}}</td>
+                  <td>{{pendingWork}}</td>
                   <td><a href="#" id="openProjectRateModal" data-toggle="modal" data-target="#setProjectRate">{{hourlyRate}}</a></td>
                 </tr>
               {{/each}}

@@ -2,6 +2,8 @@
 Router.configure({
   layoutTemplate: 'ApplicationLayout',
   onAfterAction: function(){
+    $('.modal').modal('hide');
+    $('.modal-backdrop').hide()
     $("#wrapper").removeClass("toggled");
   }
 });
