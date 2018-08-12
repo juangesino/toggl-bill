@@ -1,15 +1,26 @@
 // Define the template for Iron Router.
 Router.configure({
-  layoutTemplate: 'ApplicationLayout'
+  layoutTemplate: 'ApplicationLayout',
+  onAfterAction: function(){
+    $("#wrapper").removeClass("toggled");
+  }
 });
-
 // Create the index route.
 Router.map(function() {
-  this.route('home', {
+  this.route('dashboard', {
     path: '/',
     to: 'main',
-    name: 'home',
-    template: 'home',
+    name: 'dashboard',
+    template: 'dashboard',
+    onBeforeAction: function () {
+      this.next();
+    }
+  });
+  this.route('projects', {
+    path: '/projects',
+    to: 'main',
+    name: 'projects',
+    template: 'projects',
     onBeforeAction: function () {
       this.next();
     }

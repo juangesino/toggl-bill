@@ -1,19 +1,25 @@
 <template name="leftNav">
-  <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <nav id="sidebar-wrapper" class="col-md-2 bg-light sidebar main-container">
     <div class="sidebar-sticky">
 
 
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link {{getClass homePath}}" href="{{homePath}}">
+          <a class="nav-link {{getClass dashboardPath}}" href="{{dashboardPath}}">
             <i class="fal fa-home"></i>
-            Projects
+            Dashboard
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{getClass clientsPath}}" href="{{clientsPath}}">
             <i class="fal fa-users"></i>
             Clients
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{getClass projectsPath}}" href="{{projectsPath}}">
+            <i class="fal fa-books"></i>
+            Projects
           </a>
         </li>
         <li class="nav-item">

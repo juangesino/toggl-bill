@@ -1,10 +1,10 @@
-<template name="entries">
+<template name="projects">
 
   <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-          <h1 class="h2">Entries</h1>
+          <h1 class="h2">Projects</h1>
         </div>
       </div>
     </div>
@@ -17,28 +17,28 @@
           <table class="table table-striped table-sm">
             <thead>
               <tr>
+                <th>Name</th>
                 <th class="d-sm-none d-none">Client</th>
-                <th>Project</th>
-                <th class="d-sm-none d-none">Start</th>
-                <th class="d-sm-none d-none">End</th>
-                <th>Time</th>
-                <th>Revenue</th>
+                <th>Total Work</th>
+                <th>Billed Work</th>
+                <th class="d-sm-none d-none">Pending Payment</th>
+                <th>Hourly Rate</th>
               </tr>
             </thead>
             <tbody>
-              {{#each entries}}
+              {{#each projects}}
                 <tr>
+                  <td>{{this.name}}</td>
                   <td class="d-sm-none d-none">{{this.clientName}}</td>
-                  <td>{{this.projectName}}</td>
-                  <td class="d-sm-none d-none">{{startDate}}</td>
-                  <td class="d-sm-none d-none">{{endDate}}</td>
-                  <td>{{totalTime}}</td>
-                  <td><a href="#" id="openProjectRateModal" data-toggle="modal" data-target="#setProjectRate">{{revenue}} <i class="fal fa-pencil"></i></a></td>
+                  <td>{{totalWork}}</td>
+                  <td>{{billedWork}}</td>
+                  <td class="d-sm-none d-none">{{pendingWork}}</td>
+                  <td><a href="#" id="openProjectRateModal" data-toggle="modal" data-target="#setProjectRate">{{hourlyRate}}</a></td>
                 </tr>
               {{/each}}
-              {{#if isEmpty entries}}
+              {{#if isEmpty projects}}
                 <tr>
-                  <td colspan="6" style="text-align: center">There are no entries yet.</td>
+                  <td colspan="6" style="text-align: center">There are no projects yet.</td>
                 </tr>
               {{/if}}
             </tbody>

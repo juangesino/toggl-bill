@@ -6,8 +6,11 @@ Template.leftNav.helpers({
       return '';
     }
   },
-  homePath: function () {
-    return Router.path("home");
+  dashboardPath: function () {
+    return Router.path("dashboard");
+  },
+  projectsPath: function () {
+    return Router.path("projects");
   },
   clientsPath: function () {
     return Router.path("clients");

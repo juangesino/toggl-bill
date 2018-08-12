@@ -1,4 +1,4 @@
-Template.home.helpers({
+Template.projects.helpers({
   projects: function () {
     return Projects.find({}, {sort: {createdOn: -1}})
   },
@@ -83,7 +83,7 @@ Template.home.helpers({
   }
 });
 
-Template.home.events({
+Template.projects.events({
   'click #openProjectRateModal': function () {
     Session.set('hourlyRateProject', this)
     $('#exampleModalLabel').text(this.name);

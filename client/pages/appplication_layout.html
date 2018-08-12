@@ -1,11 +1,30 @@
 <template name="ApplicationLayout">
   {{> sAlert}}
   {{> navBar}}
-  <div class="container-fluid">
+  <div id="wrapper" class="container-fluid">
     <div class="row">
       {{> leftNav}}
-      {{> yield "main"}}
+      <main id="page-content-wrapper" role="main" class="container main-container">
+        {{> yield "main"}}
+      </main>
     </div>
   </div>
+
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+    $('#page-content-wrapper').click(function(e) {
+      $("#wrapper").removeClass("toggled");
+    });
+    $(document).mouseup(function(e) {
+      let container = $("#sidebar-wrapper");
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        $("#wrapper").removeClass("toggled");
+      }
+    });
+    </script>
+
   {{> setRateModal}}
 </template>
