@@ -8,7 +8,9 @@ Template.dashboard.helpers({
   },
   getTotalWork: function () {
     let projects = Projects.find( { hourlyRate: { $exists: true } } ).fetch()
-    if (projects) {
+    if (_.isEmpty(projects)) {
+      return '00:00'
+    } else {
       let totalSeconds = _.map(projects, function (project) {
         return project.totalSeconds
       })
@@ -22,14 +24,14 @@ Template.dashboard.helpers({
       if (minutes.toString().length === 1) {
         minutes = '0' + minutes;
       }
-      return hours + ':' + minutes;  
-    } else {
-      return '00:00'
+      return hours + ':' + minutes;
     }
   },
   getTotalRevenue: function () {
     let projects = Projects.find( { hourlyRate: { $exists: true } } ).fetch()
-    if (projects) {
+    if (_.isEmpty(projects)) {
+      return '$0'
+    } else {
       let totalRevenues = _.map(projects, function (project) {
         let secondlyWage = project.hourlyRate / 3600;
         let revenue = (project.totalSeconds * secondlyWage);
@@ -37,8 +39,6 @@ Template.dashboard.helpers({
       })
       let revenuesSum = totalRevenues.reduce(function(a, b) { return a + b; });
       return '$' + revenuesSum
-    } else {
-      return '$0'
     }
   },
   entries: function () {
