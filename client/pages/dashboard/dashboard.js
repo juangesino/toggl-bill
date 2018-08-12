@@ -6,6 +6,33 @@ Template.dashboard.helpers({
   projectsPath: function () {
     return Router.path("projects");
   },
+  getTotalWork: function () {
+    let projects = Projects.find( { hourlyRate: { $exists: true } } ).fetch()
+    let totalSeconds = _.map(projects, function (project) {
+      return project.totalSeconds
+    })
+    let secondsSum = totalSeconds.reduce(function(a, b) { return a + b; });
+    let duration = moment.duration(secondsSum, 'seconds');
+    let hours = duration.hours();
+    if (hours.toString().length === 1) {
+      hours = '0' + hours;
+    }
+    let minutes = duration.minutes();
+    if (minutes.toString().length === 1) {
+      minutes = '0' + minutes;
+    }
+    return hours + ':' + minutes;
+  },
+  getTotalRevenue: function () {
+    let projects = Projects.find( { hourlyRate: { $exists: true } } ).fetch()
+    let totalRevenues = _.map(projects, function (project) {
+      let secondlyWage = project.hourlyRate / 3600;
+      let revenue = (project.totalSeconds * secondlyWage);
+      return revenue
+    })
+    let revenuesSum = totalRevenues.reduce(function(a, b) { return a + b; });
+    return '$' + revenuesSum
+  },
   entries: function () {
     return Entries.find({}, {sort: {createdOn: -1}, limit: 5})
   },
