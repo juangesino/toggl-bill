@@ -12,6 +12,9 @@ Template.transactions.helpers({
       return '-'
     }
   },
+  amount: function () {
+    return parseFloat(this.amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+  },
   projects: function () {
     return Projects.find({ hourlyRate: { $exists: true } })
   },
@@ -49,7 +52,7 @@ Template.transactions.events({
       sAlert.error('Error adding payment. Please try again.');
     }
     $('#addTransactionModal').modal('hide');
-    // event.target.reset();
+    event.target.reset();
     return false
   },
 });

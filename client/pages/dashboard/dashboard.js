@@ -38,7 +38,7 @@ Template.dashboard.helpers({
         return revenue
       })
       let revenuesSum = totalRevenues.reduce(function(a, b) { return a + b; });
-      return '$' + revenuesSum
+      return '$' + revenuesSum.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
     }
   },
   entries: function () {
@@ -51,7 +51,7 @@ Template.dashboard.helpers({
     let project = Projects.findOne(this.projectId);
     if (project.hourlyRate) {
       let secondlyWage = project.hourlyRate / 3600;
-      return '$' + this.totalSeconds * secondlyWage
+      return '$' + (this.totalSeconds * secondlyWage).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
     } else {
       return 'Set Rate'
     }

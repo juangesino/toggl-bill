@@ -9,7 +9,7 @@ Template.projects.helpers({
     let revenue = '';
     if (this.hourlyRate) {
       let secondlyWage = this.hourlyRate / 3600;
-      revenue = '$' + (this.totalSeconds * secondlyWage) + ' - ';
+      revenue = '$' + (this.totalSeconds * secondlyWage).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' - ';
     }
     let duration = moment.duration(this.totalSeconds, 'seconds');
     let hours = duration.hours();
@@ -26,7 +26,7 @@ Template.projects.helpers({
     let billed = '';
     if (this.hourlyRate) {
       let secondlyWage = this.hourlyRate / 3600;
-      billed = '$' + (this.billedSeconds * secondlyWage) + ' - ';
+      billed = '$' + (this.billedSeconds * secondlyWage).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' - ';
     }
     let duration = moment.duration(this.billedSeconds, 'seconds');
     let hours = duration.hours();
@@ -43,7 +43,7 @@ Template.projects.helpers({
     let pending = '';
     if (this.hourlyRate) {
       let secondlyWage = this.hourlyRate / 3600;
-      pending = '$' + ((this.totalSeconds - this.billedSeconds) * secondlyWage) + ' - ';
+      pending = '$' + ((this.totalSeconds - this.billedSeconds) * secondlyWage).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' - ';
     }
     if (this.totalSeconds >= this.billedSeconds) {
       let duration = moment.duration((this.totalSeconds - this.billedSeconds), 'seconds');
